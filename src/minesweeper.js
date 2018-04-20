@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
   let board = [];
   for (numCols=0; numCols<numberOfColumns; numCols++) {
@@ -35,3 +36,21 @@ const printBoard = (board) => {
 
 //console.log(generatePlayerBoard(3,4));
 console.log(generateBombBoard(3,4,5));
+=======
+const printBoard = (board) => {
+  console.log('Current Board: ');
+  console.log(board[0].join(' | '));
+  console.log(board[1].join(' | '));
+  console.log(board[2].join(' | '));
+}
+let board = [
+  [' ', ' ',' '],
+  [' ', ' ',' '],
+  [' ', ' ',' ']
+];
+
+printBoard(board);
+board[0][1] = '1';
+board[2][2] = 'B';
+printBoard(board);
+>>>>>>> 4926304009881c8d7f5796eeb3e9d2c22fafb634
