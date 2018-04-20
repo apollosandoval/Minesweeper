@@ -1,56 +1,41 @@
-<<<<<<< HEAD
 const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
   let board = [];
-  for (numCols=0; numCols<numberOfColumns; numCols++) {
+  for (numRows=0; numRows<numberOfRows; numRows++) { //for{will create one empty row array for specified number of rows}
     let row = [];
-    for (numRows=0; numRows<numberOfRows; numRows++) {
-      row.push(' ');
+    for (numCols=0; numCols<numberOfColumns; numCols++) { //length of row is determined by # of columns
+      row.push(' '); //adds 'emptyspace' to 'row' array
     }
     board.push(row);
   }
   return board;
 }
+
 const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
   let board = [];
-  for (numCols=0; numCols<numberOfColumns; numCols++) {
+  for (numRows=0; numRows<numberOfRows; numRows++) { //for{will create one empty row array for specified number of rows}
     let row = [];
-    for (numRows=0; numRows<numberOfRows; numRows++) {
+    for (numCols=0; numCols<numberOfColumns; numCols++) { //length of row is determined by # of columns
       row.push(null);
     }
     board.push(row);
   }
-  // insert random bomb generation code below
   let numberOfBombsPlaced = 0;
   while (numberOfBombsPlaced < numberOfBombs) {
-    let randomRowIndex = Math.floor(Math.random()*numberOfRows);
-    let randomColumnIndex = Math.floor(Math.random()*numberOfColumns);
-    board[randomRowIndex][randomColumnIndex] = 'B';
+    let randomRowIndex = Math.floor(Math.random()*numberOfRows); //Do I need to subtract 1?
+    let randomColumnIndex = Math.floor(Math.random()*numberOfColumns); //Do I need to subtract 1?
+    board[randomRowIndex][randomColumnIndex] = 'B'; //array indexing: array[row][column]
     numberOfBombsPlaced++;
   }
   return board;
 }
+
 const printBoard = (board) => {
-  console.log('Current Board:');
-  board.map(row => row.join(' | ')).join('\n');
+  console.log(board.map(row => row.join(' | ')).join('\n')); //joins elements of 'board' array rows with ' | ' then joins array rows with 'newline' character
 }
 
-//console.log(generatePlayerBoard(3,4));
-console.log(generateBombBoard(3,4,5));
-=======
-const printBoard = (board) => {
-  console.log('Current Board: ');
-  console.log(board[0].join(' | '));
-  console.log(board[1].join(' | '));
-  console.log(board[2].join(' | '));
-}
-let board = [
-  [' ', ' ',' '],
-  [' ', ' ',' '],
-  [' ', ' ',' ']
-];
-
-printBoard(board);
-board[0][1] = '1';
-board[2][2] = 'B';
-printBoard(board);
->>>>>>> 4926304009881c8d7f5796eeb3e9d2c22fafb634
+playerBoard = generatePlayerBoard(3,4);
+bombBoard = generateBombBoard(3,4,5);
+console.log('Player Board:');
+printBoard(playerBoard);
+console.log('Bomb Board:');
+printBoard(bombBoard);
