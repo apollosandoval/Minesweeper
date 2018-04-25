@@ -31,6 +31,19 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
   return board;
 }
 
+const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
+  const neighborOffsets = []; //stores [rowOffset,columnOffset] for adjacent neighboring tiles
+  const neighborIndex = [-1,0,1]; //offset values of possible neighboring tiles
+  const numberOfRows = bombBoard.length;
+  const numberOfColumns = bombBoard[0].length; //equal to length of first element
+  const numberOfBombs = 0; //initialize board const with no bombs
+  for (let row of neighborIndex) {
+    for (let column of neighborIndex) {
+      neighborOffsets.push([row,column]); //populates neighborOffsets with all possible combinations
+    }
+  }
+}
+
 const printBoard = (board) => {
   console.log(board.map(row => row.join(' | ')).join('\n')); //joins elements of 'board' array rows with ' | ' then joins array rows with 'newline' character
 }
