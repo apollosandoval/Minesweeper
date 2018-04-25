@@ -12,19 +12,21 @@ const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
 
 const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
   let board = [];
-  for (numRows=0; numRows<numberOfRows; numRows++) { //for{will create one empty row array for specified number of rows}
+  for (let numRows=0; numRows<numberOfRows; numRows++) { //for{will create one empty row array for specified number of rows}
     let row = [];
-    for (numCols=0; numCols<numberOfColumns; numCols++) { //length of row is determined by # of columns
+    for (let numCols=0; numCols<numberOfColumns; numCols++) { //length of row is determined by # of columns
       row.push(null);
     }
     board.push(row);
   }
   let numberOfBombsPlaced = 0;
   while (numberOfBombsPlaced < numberOfBombs) {
-    let randomRowIndex = Math.floor(Math.random()*numberOfRows); //Do I need to subtract 1?
-    let randomColumnIndex = Math.floor(Math.random()*numberOfColumns); //Do I need to subtract 1?
-    board[randomRowIndex][randomColumnIndex] = 'B'; //array indexing: array[row][column]
-    numberOfBombsPlaced++;
+    let randomRowIndex = Math.floor(Math.random()*numberOfRows);
+    let randomColumnIndex = Math.floor(Math.random()*numberOfColumns);
+    if (board[randomRowIndex][randomColumnIndex] !== 'B') {
+      board[randomRowIndex][randomColumnIndex] = 'B'; //array indexing: array[row][column]
+      numberOfBombsPlaced++;
+    }
   }
   return board;
 }
