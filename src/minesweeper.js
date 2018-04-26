@@ -40,9 +40,22 @@ const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
   for (let row of neighborIndex) {
     for (let column of neighborIndex) {
       neighborOffsets.push([row,column]); //populates neighborOffsets with all possible combinations
-    }
-  }
-}
+    } //closing bracket of nested for loop
+  } //closing bracket of 'for' loop
+  neighborOffsets.forEach(offset => {
+    const neighborRowIndex = rowIndex + offset[0]; //offset represents a nested array in neighborOffsets
+    const neighborColumnIndex = columnIndex + offset[1];
+    if (neighborRowIndex >=0 &&
+        neighborRowIndex < numberOfRows &&
+        neighborColumnIndex >= 0 &&
+        neighborColumnIndex < numberOfColumns) { //check if row and column indeces for neighboring tiles are valid
+      if (bombBoard[neighborRowIndex][neighborColumnIndex === 'B']) { //check if neighboring tiles contain a '[B]omb'
+        numberOfBombs++; //increment bomb counter if space we index to is 'valid' and contains a 'bomb'
+      } //closing bracket of nested if statement
+    } //closing bracket of if statement
+  }); //closing bracket of neighborOffsets.forEach()
+  return numberOfBombs; //output for function
+} //closing bracket for getNumberOfNeighborBombs function
 
 const printBoard = (board) => {
   console.log(board.map(row => row.join(' | ')).join('\n')); //joins elements of 'board' array rows with ' | ' then joins array rows with 'newline' character
