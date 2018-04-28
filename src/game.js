@@ -8,9 +8,9 @@
 // game.playMove(1, 2);
 // When done run `.exit`
 
-import Board from './board';
+import {Board} from './board';
 
-export class Game {
+class Game {
   constructor(numberOfRows, numberOfColumns, numberOfBombs) {
     this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
   }

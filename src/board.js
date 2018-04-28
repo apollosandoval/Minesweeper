@@ -49,7 +49,7 @@ export class Board {
     return numberOfBombs; //output for function
   } //closing bracket for getNumberOfNeighborBombs function
   hasSafeTiles() {
-    return this._numberOfTiles != this._numberOfBombs;
+    return this._numberOfTiles !== this._numberOfBombs;
   } //closing bracket of hasSafeTiles()
   print() {
     console.log(this._playerBoard.map(row => row.join(' | ')).join('\n')); //joins elements of 'board' array rows with ' | ' then joins array rows with 'newline' character
